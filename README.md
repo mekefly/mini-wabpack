@@ -11,12 +11,12 @@
 ## todo
 
 - [x] 生成我们所需要的js
-    -[x] 获取文件内容
-    -[x] 提取依赖
-    -[x] 制作依赖图
-    -[x] 将import 转换为 require
-    -[x] require的实现
-    -[x] 合成所需代码
+  - [x] 获取文件内容
+  - [x] 提取依赖
+  - [x] 制作依赖图
+  - [x] 将import 转换为 require
+  - [x] require的实现
+  - [x] 合成所需代码
 
 ## Get started
 
