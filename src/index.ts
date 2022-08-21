@@ -1,10 +1,11 @@
-export function hello() {
-  console.log("hello");
-  if (__DEV__) {
-    //这里面的内容在prod包中不存在(被删除)
-    console.log("hello_dev");
-  }
+import { writeFileSync } from "fs";
+import { resolve } from "path";
+import { builder } from "./builder";
+
+const buildPath = "build/index.js";
+export const mainPath = "./example/index.js";
+
+export function writeIn(text: string) {
+  writeFileSync(resolve(buildPath), text);
 }
-export function add(x: any, y: any) {
-  return x + y;
-}
+builder();
