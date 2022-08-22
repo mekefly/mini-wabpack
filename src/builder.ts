@@ -1,9 +1,8 @@
 import { genGraph } from "./genGraph";
 import { generateCode } from "./template";
-import { writeIn } from "./index";
 
-export function builder() {
-  const graph = genGraph();
+export function builder(input: string) {
+  const graph = genGraph(input);
   const code = generateCode(graph);
-  writeIn(code);
+  return code;
 }

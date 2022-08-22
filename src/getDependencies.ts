@@ -1,12 +1,13 @@
 import { getFileContent } from "./getFileContent";
 import { genAst } from "./genAst";
 import { dependencyAnalysis } from "./dependencyAnalysis";
-import { transform } from "babel-core";
-
+import { useLoader } from "./useLoader";
+import { importToRequire } from "./importToRequire";
 export let id = 0;
 export type Dependencies = ReturnType<typeof getDependencies>;
 export function getDependencies(fileFullPath: string, path: string) {
-  const file = getFileContent(fileFullPath);
+  let file = getFileContent(fileFullPath);
+  file = useLoader(fileFullPath, file);
   const ast = genAst(file);
   const dep = dependencyAnalysis(ast);
   const code = importToRequire(file);
@@ -19,7 +20,4 @@ export function getDependencies(fileFullPath: string, path: string) {
     code,
     mapping: {} as any,
   };
-}
-function importToRequire(file: string) {
-  return transform(file, { presets: ["env"] }).code ?? "";
 }

@@ -1,9 +1,8 @@
 import { resolve, dirname } from "path";
 import { getDependencies, id } from "./getDependencies";
-import { mainPath } from "./index";
 
 const modulesMapping: any = {};
-export function genGraph() {
+export function genGraph(mainPath) {
   const fullPath = resolve(mainPath);
 
   const dependencies = getDependencies(fullPath, mainPath);

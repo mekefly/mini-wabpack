@@ -6,9 +6,7 @@ export function generateCode(graph: Dependencies[]) {
   var cache = {};
   require(0);
   function require(id) {
-    if (cache[id]) {
-      return cache[id].exports;
-    }
+    if (cache[id]) return cache[id].exports;
     var m = modules[id];
     var fn = m[0];
     var mapping = m[1];

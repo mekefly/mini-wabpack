@@ -18,7 +18,8 @@
     // "declarationMap": true, // 生成定义sourceMap
     // "declarationDir": "./lib/types/", // 定义文件输出目录
     "lib": ["ES2021", "dom"], // 导入库类型定义
-    "types": ["node", "vitest/globals"] // 导入指定类型包
+    "types": ["node", "vitest/globals"], // 导入指定类型包
+    "noImplicitAny": false
   },
   "include": [
     "src/*", // 导入目录
