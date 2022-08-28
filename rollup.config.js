@@ -1,10 +1,11 @@
+import { babel } from "@rollup/plugin-babel";
+import commonjs from "@rollup/plugin-commonjs";
+import json from "@rollup/plugin-json";
 import resolve from "@rollup/plugin-node-resolve";
 import replace from "@rollup/plugin-replace";
-import commonjs from "@rollup/plugin-commonjs";
-import ts from "rollup-plugin-typescript2";
-import { terser } from "rollup-plugin-terser";
 import path from "path";
-import { babel } from "@rollup/plugin-babel";
+import { terser } from "rollup-plugin-terser";
+import ts from "rollup-plugin-typescript2";
 import packageJson from "./package.json";
 /**
  * 驼峰命名
@@ -53,6 +54,7 @@ function createConfig(format, isProd = false) {
     input: getPath("./src/index.ts"),
     plugins: createPlugin(name, isProd),
     output,
+    exclude: ["node_modules"],
   };
 }
 
@@ -86,7 +88,7 @@ function createPlugin(format, isProd) {
   // const ifProdGet = defIfProdGet(isProd)
 
   const isSourceMap = !isProd;
-  const ret = [];
+  const ret = [json()];
 
   if (!isProd) {
     isDeclaration = true;
@@ -107,6 +109,7 @@ function createPlugin(format, isProd) {
           "test-dts",
           "src/test/**",
           "src/codeGenerator/*",
+          "node_module/**/*",
         ],
       },
     })

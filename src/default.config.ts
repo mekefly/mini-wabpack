@@ -9,5 +9,5 @@ export default {
     },
   ],
   output: "build/index.js",
-  input: "./example/index.js",
+  input: "src/index.js",
 };
